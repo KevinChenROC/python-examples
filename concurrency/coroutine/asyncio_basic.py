@@ -9,7 +9,7 @@ async def count():
 
 # native coroutin
 async def main():
-    # Execute three count() concurrently.
+    # Execute three async count() concurrently.
     # return a list of values if any.
     await asyncio.gather(count(), count(), count())
 
@@ -19,8 +19,9 @@ if __name__ == "__main__":
 
     s = time.perf_counter()
 
-    # entry point for teh async program.
-    # Create an event loop and exit with closing it.
+    # entry point for async program.
+    # Create an event loop and exit by closing it.
     asyncio.run(main())
+
     elapsed = time.perf_counter() - s
     print(f"{__file__} executed in {elapsed:0.2f} seconds.")
