@@ -2,4 +2,4 @@ print(f"Module {__name__} is imported")
 
 
 def hello():
-    print("hello world from bar.py!")
+    print(f"hello world from {__name__}!")
