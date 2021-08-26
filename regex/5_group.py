@@ -35,3 +35,21 @@ for match in matches:
     print(match.group(1))
     print(match.group(2))
     print(match.group(3))
+
+
+# ===============Advanced group usage======================
+
+# capturing groups by index
+m = re.match("([abc])+", "abc")
+print(m.groups())
+
+
+# non-capturing groups
+m = re.match("(?:[abc])+", "abc")
+print(m.groups())
+
+
+# # capturing groups by names
+p = re.compile(r'(?P<word>\b\w+\b)\s(?P=word)')
+m = p.search('(((( Lots Lots of punctuation )))')
+print(m.group())
