@@ -1,1 +1,1 @@
-print(f"Run __init__ in {__name__}")
+print(f"Run __init__.py in {__file__}")
