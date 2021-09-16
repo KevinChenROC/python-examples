@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, text
 from sqlalchemy.sql.expression import or_
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
@@ -30,8 +30,14 @@ session.commit()
 
 # basic query usage
 query = session.query(User)
-for row in query.filter(User.name == "kevin"):
+for row in query.filter('name' == "kevin"):
     print(row)
 
 for row in query.filter(or_(User.name == "kevin", User.name == "Bon")):
     print(row)
+
+for row in query.order_by(text('id')):
+    print(row)
+
+# for row in query.order_by(User.id):
+#     print(row)
