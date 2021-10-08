@@ -6,9 +6,9 @@ def worker(q, lock):
     while True:
         value = q.get()  # blocks until the item is available
 
-        # do stuff...
+        # To prevent threads to print concurrently
         with lock:
-            # prevent let a thread print consecutively with this lock
+            # do stuff...
             print(f"in {current_thread().name} got {value}")
         # ...
 
@@ -32,6 +32,7 @@ if __name__ == "__main__":
     for x in range(20):
         q.put(x)
 
-    q.join()  # Blocks until all items in the queue have been gotten and processed.
+    # Blocks until all items in the queue have been gotten and processed.
+    q.join()
 
     print("main done")
