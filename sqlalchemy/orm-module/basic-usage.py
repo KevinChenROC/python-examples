@@ -30,14 +30,18 @@ session.commit()
 
 # basic query usage
 query = session.query(User)
-for row in query.filter('name' == "kevin"):
-    print(row)
+kevin = query.filter(User.name == "kevin").first()
+print(kevin)
+kevin.name='KEVIN'
+session.commit()
+# re-query the DB because kevin.name is changed.
+print(kevin)
 
-for row in query.filter(or_(User.name == "kevin", User.name == "Bon")):
-    print(row)
+# for row in query.filter(or_(User.name == "kevin", User.name == "Bon")):
+#     print(row)
 
-for row in query.order_by(text('id')):
-    print(row)
+# for row in query.order_by(text('id')):
+#     print(row)
 
 # for row in query.order_by(User.id):
 #     print(row)
